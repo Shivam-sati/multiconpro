@@ -1,0 +1,14 @@
+runtime: java11
+instance_class: F1
+
+env_variables:
+  SPRING_DATASOURCE_URL: jdbc:postgresql:///leaderboard_db?cloudSqlInstance=leaderboard-backend-453909:us-central1:shivamsati123&socketFactory=com.google.cloud.sql.postgres.SocketFactory
+  SPRING_DATASOURCE_USERNAME: postgres
+  SPRING_DATASOURCE_PASSWORD: 148510shivam
+
+build:
+  pre_build:
+    - chmod +x mvnw
+  steps:
+    - name: 'gcr.io/cloud-builders/mvn'
+      args: ['clean', 'package', '-DskipTests']
